@@ -7,11 +7,14 @@ import com.aaroncj.btcmininginfo.proxy.mapper.BlockchainPriceMapper;
 import java.util.function.Function;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
 public class BitcoinPriceProxyIntegrationTest {
+
+  @Autowired private String blockchainDotInfoPriceUrl;
 
   @Test
   public void getBitcoinPriceProxy() throws UnableToRetrieveBitcoinPriceException {
@@ -19,7 +22,7 @@ public class BitcoinPriceProxyIntegrationTest {
     Function<String, String> blockchainPriceMapper = new BlockchainPriceMapper();
 
     BitcoinPriceProxy bitcoinPriceProxy =
-        new BitcoinPriceProxyImpl(blockchainPriceMapper, restTemplate);
+        new BitcoinPriceProxyImpl(blockchainDotInfoPriceUrl, blockchainPriceMapper, restTemplate);
 
     String actual = bitcoinPriceProxy.execute();
     System.out.println("Price: " + actual);

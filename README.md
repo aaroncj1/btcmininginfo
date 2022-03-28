@@ -36,5 +36,5 @@ Sample Response Body:
     "profitDollars": "971.586"
     }
 
-### Code Style Guide 
+## Code Style Guide 
 I am using google style guide for this project. You can import the style schema from their repo here: https://github.com/google/styleguide

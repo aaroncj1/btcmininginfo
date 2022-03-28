@@ -7,6 +7,7 @@ import com.aaroncj.btcmininginfo.service.GetCurrentHashPrice;
 import com.aaroncj.btcmininginfo.service.GetCurrentMinerProfitability;
 import com.aaroncj.btcmininginfo.service.dto.BitcoinHashPriceDto;
 import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentHashPrice;
+import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentMinerProfitabilityException;
 import java.util.function.Function;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -77,7 +78,8 @@ class RestAPIControllerTest {
   }
 
   @Test
-  public void bitcoinMiningProfitabilityByTeraHashWattage_getCurrentMinerProfitability() {
+  public void bitcoinMiningProfitabilityByTeraHashWattage_getCurrentMinerProfitability()
+      throws UnableToGetCurrentMinerProfitabilityException {
     MinerDataInputDto minerDataInputDto = Mockito.mock(MinerDataInputDto.class);
 
     restAPIController.bitcoinMiningProfitabilityByTeraHashWattage(minerDataInputDto);
@@ -86,7 +88,8 @@ class RestAPIControllerTest {
   }
 
   @Test
-  public void bitcoinMiningProfitabilityByTeraHashWattage_returnBitcoinDataDto() {
+  public void bitcoinMiningProfitabilityByTeraHashWattage_returnBitcoinDataDto()
+      throws UnableToGetCurrentMinerProfitabilityException {
     MinerDataInputDto minerDataInputDto = Mockito.mock(MinerDataInputDto.class);
     ResponseEntity<MinerProfitabilityResponse> expected = ResponseEntity.ok(null);
 

@@ -6,6 +6,7 @@ import com.aaroncj.btcmininginfo.service.GetCurrentHashPrice;
 import com.aaroncj.btcmininginfo.service.GetCurrentMinerProfitability;
 import com.aaroncj.btcmininginfo.service.dto.BitcoinHashPriceDto;
 import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentHashPrice;
+import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentMinerProfitabilityException;
 import java.util.function.BiFunction;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +27,8 @@ public class GetCurrentMinerProfitabilityImpl implements GetCurrentMinerProfitab
   }
 
   @Override
-  public MinerProfitabilityResponse execute(MinerDataInputDto minerDataInputDto) {
+  public MinerProfitabilityResponse execute(MinerDataInputDto minerDataInputDto)
+      throws UnableToGetCurrentMinerProfitabilityException {
 
     try {
       BitcoinHashPriceDto bitcoinHashPriceDto = getCurrentHashPrice.execute();
@@ -34,7 +36,7 @@ public class GetCurrentMinerProfitabilityImpl implements GetCurrentMinerProfitab
           bitcoinHashPriceDto, minerDataInputDto);
     } catch (UnableToGetCurrentHashPrice e) {
       System.out.println("Cant get hashprice : " + e);
-      return null;
+      throw new UnableToGetCurrentMinerProfitabilityException(e);
     }
   }
 }

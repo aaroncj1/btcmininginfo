@@ -6,6 +6,7 @@ import com.aaroncj.btcmininginfo.service.GetCurrentHashPrice;
 import com.aaroncj.btcmininginfo.service.GetCurrentMinerProfitability;
 import com.aaroncj.btcmininginfo.service.dto.BitcoinHashPriceDto;
 import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentHashPrice;
+import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentMinerProfitabilityException;
 import java.util.function.BiFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,7 +48,8 @@ class GetCurrentMinerProfitabilityImplTest {
   }
 
   @Test
-  public void execute_getBitcoinPrice() throws UnableToGetCurrentHashPrice {
+  public void execute_getBitcoinPrice()
+      throws UnableToGetCurrentHashPrice, UnableToGetCurrentMinerProfitabilityException {
 
     getCurrentMinerProfitability.execute(minerDataInputDto);
 
@@ -55,7 +57,7 @@ class GetCurrentMinerProfitabilityImplTest {
   }
 
   @Test
-  public void execute_mapResponse() {
+  public void execute_mapResponse() throws UnableToGetCurrentMinerProfitabilityException {
 
     getCurrentMinerProfitability.execute(minerDataInputDto);
 
@@ -64,7 +66,8 @@ class GetCurrentMinerProfitabilityImplTest {
   }
 
   @Test
-  public void execute_returnMiningProfitability() {
+  public void execute_returnMiningProfitability()
+      throws UnableToGetCurrentMinerProfitabilityException {
     MinerProfitabilityResponse expected = new MinerProfitabilityResponse("1", "2", "3", "4", "5");
     Mockito.when(
             bitcoinHashPriceDtoMinerDataInputDtoMinerProfitabilityResponseMapper.apply(
@@ -77,9 +80,12 @@ class GetCurrentMinerProfitabilityImplTest {
   }
 
   @Test
-  public void execute_catchException() throws UnableToGetCurrentHashPrice {
+  public void execute_catchException_throwUnableToGetCurrentMinerProfitability()
+      throws UnableToGetCurrentHashPrice {
     Mockito.when(getCurrentHashPrice.execute()).thenThrow(UnableToGetCurrentHashPrice.class);
 
-    Assertions.assertNull(getCurrentMinerProfitability.execute(minerDataInputDto));
+    Assertions.assertThrows(
+        UnableToGetCurrentMinerProfitabilityException.class,
+        () -> getCurrentMinerProfitability.execute(minerDataInputDto));
   }
 }

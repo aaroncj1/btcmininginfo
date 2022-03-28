@@ -7,6 +7,7 @@ import com.aaroncj.btcmininginfo.service.GetCurrentHashPrice;
 import com.aaroncj.btcmininginfo.service.GetCurrentMinerProfitability;
 import com.aaroncj.btcmininginfo.service.dto.BitcoinHashPriceDto;
 import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentHashPrice;
+import com.aaroncj.btcmininginfo.service.exception.UnableToGetCurrentMinerProfitabilityException;
 import java.util.function.Function;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +43,8 @@ public class RestAPIController {
 
   @PostMapping(consumes = "application/json", produces = "application/json")
   public ResponseEntity<MinerProfitabilityResponse> bitcoinMiningProfitabilityByTeraHashWattage(
-      @RequestBody MinerDataInputDto minerDataInputDto) {
+      @RequestBody MinerDataInputDto minerDataInputDto)
+      throws UnableToGetCurrentMinerProfitabilityException {
     return ResponseEntity.ok(getCurrentMinerProfitability.execute(minerDataInputDto));
   }
 }
