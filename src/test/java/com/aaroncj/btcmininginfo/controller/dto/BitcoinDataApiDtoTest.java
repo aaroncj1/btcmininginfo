@@ -16,13 +16,13 @@ class BitcoinDataApiDtoTest {
   }
 
   @Test
-  public void get_set_difficulty() {
-    String expected = "difficulty";
+  public void get_set_hashrate() {
+    String expected = "hashrate";
     BitcoinDataApiDto bitcoinDataApiDto = new BitcoinDataApiDto();
 
-    bitcoinDataApiDto.setDifficulty(expected);
+    bitcoinDataApiDto.setHashrate(expected);
 
-    Assertions.assertEquals(expected, bitcoinDataApiDto.getDifficulty());
+    Assertions.assertEquals(expected, bitcoinDataApiDto.getHashrate());
   }
 
   @Test
@@ -48,15 +48,15 @@ class BitcoinDataApiDtoTest {
   @Test
   public void allArgsConstructor() {
     String bitcoinPrice = "bitcoinPrice";
-    String difficulty = "difficulty";
+    String hashrate = "hashrate";
     String hashPriceDollars = "hashPriceDollars";
     String hashPriceSats = "hashPriceSats";
 
     BitcoinDataApiDto bitcoinDataApiDto =
-        new BitcoinDataApiDto(bitcoinPrice, difficulty, hashPriceDollars, hashPriceSats);
+        new BitcoinDataApiDto(bitcoinPrice, hashrate, hashPriceDollars, hashPriceSats);
 
     Assertions.assertEquals(bitcoinPrice, bitcoinDataApiDto.getBitcoinPrice());
-    Assertions.assertEquals(difficulty, bitcoinDataApiDto.getDifficulty());
+    Assertions.assertEquals(hashrate, bitcoinDataApiDto.getHashrate());
     Assertions.assertEquals(hashPriceDollars, bitcoinDataApiDto.getHashPriceDollars());
     Assertions.assertEquals(hashPriceSats, bitcoinDataApiDto.getHashPriceSats());
   }

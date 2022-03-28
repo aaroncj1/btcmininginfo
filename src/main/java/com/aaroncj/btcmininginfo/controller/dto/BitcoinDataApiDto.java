@@ -7,7 +7,7 @@ public class BitcoinDataApiDto {
 
   private String bitcoinPrice;
 
-  private String difficulty;
+  private String hashrate;
 
   private String hashPriceDollars;
 
@@ -16,9 +16,9 @@ public class BitcoinDataApiDto {
   public BitcoinDataApiDto() {}
 
   public BitcoinDataApiDto(
-      String bitcoinPrice, String difficulty, String hashPriceDollars, String hashPriceSats) {
+      String bitcoinPrice, String hashrate, String hashPriceDollars, String hashPriceSats) {
     this.bitcoinPrice = bitcoinPrice;
-    this.difficulty = difficulty;
+    this.hashrate = hashrate;
     this.hashPriceDollars = hashPriceDollars;
     this.hashPriceSats = hashPriceSats;
   }
@@ -31,12 +31,12 @@ public class BitcoinDataApiDto {
     this.bitcoinPrice = bitcoinPrice;
   }
 
-  public String getDifficulty() {
-    return difficulty;
+  public String getHashrate() {
+    return hashrate;
   }
 
-  public void setDifficulty(String difficulty) {
-    this.difficulty = difficulty;
+  public void setHashrate(String hashrate) {
+    this.hashrate = hashrate;
   }
 
   public String getHashPriceDollars() {

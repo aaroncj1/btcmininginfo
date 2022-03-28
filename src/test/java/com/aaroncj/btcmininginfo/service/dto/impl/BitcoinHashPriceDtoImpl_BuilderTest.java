@@ -9,14 +9,14 @@ import org.junit.jupiter.api.Test;
 class BitcoinHashPriceDtoImpl_BuilderTest {
 
   @Test
-  public void get_set_difficulty() {
-    String expected = "difficulty";
+  public void get_set_hashrate() {
+    String expected = "hashrate";
     BitcoinHashPriceDtoBuilder bitcoinHashPriceDtoBuilder = new BitcoinHashPriceDtoBuilderImpl();
 
     BitcoinHashPriceDto bitcoinHashPriceDto =
-        bitcoinHashPriceDtoBuilder.setDifficulty(expected).build();
+        bitcoinHashPriceDtoBuilder.setHashrate(expected).build();
 
-    Assertions.assertEquals(expected, bitcoinHashPriceDto.getDifficulty());
+    Assertions.assertEquals(expected, bitcoinHashPriceDto.getHashrate());
   }
 
   @Test

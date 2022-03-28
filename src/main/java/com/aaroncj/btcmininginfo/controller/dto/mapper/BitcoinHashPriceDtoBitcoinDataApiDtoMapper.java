@@ -18,7 +18,7 @@ public class BitcoinHashPriceDtoBitcoinDataApiDtoMapper
   @Override
   public BitcoinDataApiDto apply(BitcoinHashPriceDto bitcoinHashPriceDto) {
     bitcoinDataApiDto.setBitcoinPrice(bitcoinHashPriceDto.getPrice());
-    bitcoinDataApiDto.setDifficulty(bitcoinHashPriceDto.getDifficulty());
+    bitcoinDataApiDto.setHashrate(bitcoinHashPriceDto.getHashrate());
     bitcoinDataApiDto.setHashPriceDollars(bitcoinHashPriceDto.getHashPriceDollars());
     bitcoinDataApiDto.setHashPriceSats(bitcoinHashPriceDto.getHashPriceSats());
     return bitcoinDataApiDto;

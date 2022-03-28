@@ -6,7 +6,7 @@ public interface BitcoinHashPriceDtoBuilder {
 
   BitcoinHashPriceDto build();
 
-  BitcoinHashPriceDtoBuilder setDifficulty(String difficulty);
+  BitcoinHashPriceDtoBuilder setHashrate(String hashrate);
 
   BitcoinHashPriceDtoBuilder setHashPriceDollars(String hashPriceDollars);
 

@@ -4,22 +4,22 @@ import com.aaroncj.btcmininginfo.service.dto.BitcoinHashPriceDto;
 
 public class BitcoinHashPriceDtoImpl implements BitcoinHashPriceDto {
 
-  private final String difficulty;
+  private final String hashrate;
   private final String hashPriceDollars;
   private final String hashPriceSats;
   private final String price;
 
   public BitcoinHashPriceDtoImpl(
-      String difficulty, String hashPriceDollars, String hashPriceSats, String price) {
-    this.difficulty = difficulty;
+      String hashrate, String hashPriceDollars, String hashPriceSats, String price) {
+    this.hashrate = hashrate;
     this.hashPriceDollars = hashPriceDollars;
     this.hashPriceSats = hashPriceSats;
     this.price = price;
   }
 
   @Override
-  public String getDifficulty() {
-    return difficulty;
+  public String getHashrate() {
+    return hashrate;
   }
 
   @Override

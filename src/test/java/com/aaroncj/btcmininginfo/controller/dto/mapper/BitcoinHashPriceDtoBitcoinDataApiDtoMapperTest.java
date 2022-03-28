@@ -21,7 +21,7 @@ class BitcoinHashPriceDtoBitcoinDataApiDtoMapperTest {
   }
 
   @Test
-  public void apply_setDifficulty() {
+  public void apply_setHashrate() {
     BitcoinDataApiDto bitcoinDataApiDto = Mockito.mock(BitcoinDataApiDto.class);
     BitcoinHashPriceDto bitcoinHashPriceDto = Mockito.mock(BitcoinHashPriceDto.class);
 
@@ -30,7 +30,7 @@ class BitcoinHashPriceDtoBitcoinDataApiDtoMapperTest {
 
     bitcoinHashPriceDtoBitcoinDataApiDtoMapper.apply(bitcoinHashPriceDto);
 
-    Mockito.verify(bitcoinDataApiDto).setDifficulty(bitcoinHashPriceDto.getDifficulty());
+    Mockito.verify(bitcoinDataApiDto).setHashrate(bitcoinHashPriceDto.getHashrate());
   }
 
   @Test

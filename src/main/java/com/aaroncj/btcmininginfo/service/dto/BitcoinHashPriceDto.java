@@ -2,7 +2,7 @@ package com.aaroncj.btcmininginfo.service.dto;
 
 public interface BitcoinHashPriceDto {
 
-  String getDifficulty();
+  String getHashrate();
 
   String getHashPriceDollars();
 

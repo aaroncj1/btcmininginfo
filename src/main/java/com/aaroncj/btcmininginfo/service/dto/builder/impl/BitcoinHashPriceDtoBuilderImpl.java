@@ -6,7 +6,7 @@ import com.aaroncj.btcmininginfo.service.dto.impl.BitcoinHashPriceDtoImpl;
 
 public class BitcoinHashPriceDtoBuilderImpl implements BitcoinHashPriceDtoBuilder {
 
-  private String difficulty;
+  private String hashrate;
   private String hashPriceDollars;
   private String hashPriceSats;
   private String price;
@@ -15,12 +15,12 @@ public class BitcoinHashPriceDtoBuilderImpl implements BitcoinHashPriceDtoBuilde
   public BitcoinHashPriceDto build() {
 
     return new BitcoinHashPriceDtoImpl(
-        this.difficulty, this.hashPriceDollars, this.hashPriceSats, this.price);
+        this.hashrate, this.hashPriceDollars, this.hashPriceSats, this.price);
   }
 
   @Override
-  public BitcoinHashPriceDtoBuilder setDifficulty(String difficulty) {
-    this.difficulty = difficulty;
+  public BitcoinHashPriceDtoBuilder setHashrate(String hashrate) {
+    this.hashrate = hashrate;
     return this;
   }
 
