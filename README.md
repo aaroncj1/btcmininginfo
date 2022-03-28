@@ -1,8 +1,8 @@
 # btcmininginfo
 SpringBoot API that calculates and returns current Bitcoin Mining Information
 
-##Endpoints
-###HTTP GET Method /bitcoin
+## Endpoints
+### HTTP GET Method /bitcoin
 This endpoint will return current bitcoin mining details. Including Price, current Hashrate, hashprice per Terahash in Dollars and in Satoshis
 
 Sample Response:
@@ -14,7 +14,7 @@ Sample Response:
     "hashPriceSats": "536.96"
     }
 
-###HTTP POST Method /bitcoin
+### HTTP POST Method /bitcoin
 This same uri endpoint will take your miner details in the request and respond with your current revenue and profitability in Dollars and Satoshis
 
 Sample Request Body :
