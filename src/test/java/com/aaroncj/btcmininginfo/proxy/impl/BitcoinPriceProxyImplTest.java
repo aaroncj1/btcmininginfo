@@ -16,7 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @ExtendWith(MockitoExtension.class)
 class BitcoinPriceProxyImplTest {
 
-  private static final String blockchainDotInfoPriceUrl = "https://api.blockchain.com/v3/exchange/tickers/BTC-USD";
+  private static final String blockchainDotInfoPriceUrl =
+      "https://api.blockchain.com/v3/exchange/tickers/BTC-USD";
 
   @Mock Function<String, String> blockchainPriceMapper;
   @Mock RestTemplate restTemplate;
@@ -25,7 +26,8 @@ class BitcoinPriceProxyImplTest {
 
   @BeforeEach
   public void setUp() {
-    bitcoinPriceProxy = new BitcoinPriceProxyImpl(blockchainDotInfoPriceUrl, blockchainPriceMapper, restTemplate);
+    bitcoinPriceProxy =
+        new BitcoinPriceProxyImpl(blockchainDotInfoPriceUrl, blockchainPriceMapper, restTemplate);
     Mockito.when(
             restTemplate.getForObject(
                 "https://api.blockchain.com/v3/exchange/tickers/BTC-USD", String.class))

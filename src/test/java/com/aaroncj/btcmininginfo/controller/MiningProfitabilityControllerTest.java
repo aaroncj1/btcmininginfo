@@ -22,7 +22,7 @@ import org.springframework.http.ResponseEntity;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class RestAPIControllerTest {
+class MiningProfitabilityControllerTest {
 
   @Mock private GetCurrentHashPrice getCurrentHashPrice;
   @Mock private GetCurrentMinerProfitability getCurrentMinerProfitability;
@@ -35,7 +35,7 @@ class RestAPIControllerTest {
   private Function<BitcoinHashPriceDto, BitcoinDataApiDto>
       bitcoinHashPriceDtoBitcoinDataApiDtoMapper;
 
-  private RestAPIController restAPIController;
+  private MiningProfitabilityController miningProfitabilityController;
 
   @BeforeEach
   public void setUp() throws UnableToGetCurrentHashPrice {
@@ -43,8 +43,8 @@ class RestAPIControllerTest {
     Mockito.when(bitcoinHashPriceDtoBitcoinDataApiDtoMapper.apply(bitcoinHashPriceDto))
         .thenReturn(bitcoinDataApiDto);
 
-    restAPIController =
-        new RestAPIController(
+    miningProfitabilityController =
+        new MiningProfitabilityController(
             bitcoinHashPriceDtoBitcoinDataApiDtoMapper,
             getCurrentHashPrice,
             getCurrentMinerProfitability);
@@ -53,7 +53,7 @@ class RestAPIControllerTest {
   @Test
   public void bitcoinMiningProfitabilityPerTeraHash_getHashPriceCalled()
       throws UnableToGetCurrentHashPrice {
-    restAPIController.bitcoinMiningProfitabilityPerTeraHash();
+    miningProfitabilityController.bitcoinMiningProfitabilityPerTeraHash();
 
     Mockito.verify(getCurrentHashPrice).execute();
   }
@@ -61,7 +61,7 @@ class RestAPIControllerTest {
   @Test
   public void bitcoinMiningProfitabilityPerTeraHash_mapBitcoinHashPriceDtoToBitcoinDataApiDto()
       throws UnableToGetCurrentHashPrice {
-    restAPIController.bitcoinMiningProfitabilityPerTeraHash();
+    miningProfitabilityController.bitcoinMiningProfitabilityPerTeraHash();
 
     Mockito.verify(bitcoinHashPriceDtoBitcoinDataApiDtoMapper).apply(bitcoinHashPriceDto);
   }
@@ -72,7 +72,7 @@ class RestAPIControllerTest {
     ResponseEntity<BitcoinDataApiDto> expected = ResponseEntity.ok(bitcoinDataApiDto);
 
     ResponseEntity<BitcoinDataApiDto> actual =
-        restAPIController.bitcoinMiningProfitabilityPerTeraHash();
+        miningProfitabilityController.bitcoinMiningProfitabilityPerTeraHash();
 
     Assertions.assertEquals(expected, actual);
   }
@@ -82,7 +82,7 @@ class RestAPIControllerTest {
       throws UnableToGetCurrentMinerProfitabilityException {
     MinerDataInputDto minerDataInputDto = Mockito.mock(MinerDataInputDto.class);
 
-    restAPIController.bitcoinMiningProfitabilityByTeraHashWattage(minerDataInputDto);
+    miningProfitabilityController.bitcoinMiningProfitabilityByTeraHashWattage(minerDataInputDto);
 
     Mockito.verify(getCurrentMinerProfitability).execute(minerDataInputDto);
   }
@@ -94,7 +94,8 @@ class RestAPIControllerTest {
     ResponseEntity<MinerProfitabilityResponse> expected = ResponseEntity.ok(null);
 
     ResponseEntity<MinerProfitabilityResponse> actual =
-        restAPIController.bitcoinMiningProfitabilityByTeraHashWattage(minerDataInputDto);
+        miningProfitabilityController.bitcoinMiningProfitabilityByTeraHashWattage(
+            minerDataInputDto);
 
     Assertions.assertEquals(expected, actual);
   }

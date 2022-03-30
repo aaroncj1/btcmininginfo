@@ -12,15 +12,14 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootTest
 public class BitcoinHashrateProxyIntegrationTest {
 
-  @Autowired
-  private String blockchainDotInfoHashrateUrl;
+  @Autowired private String blockchainDotInfoHashrateUrl;
 
   @Test
   public void getBitcoinPriceProxy() throws UnableToRetrieveBitcoinHashrateException {
     RestTemplate restTemplate = new RestTemplate();
 
-    BitcoinHashrateProxy bitcoinHashrateProxy = new BitcoinHashrateProxyImpl(
-        blockchainDotInfoHashrateUrl, restTemplate);
+    BitcoinHashrateProxy bitcoinHashrateProxy =
+        new BitcoinHashrateProxyImpl(blockchainDotInfoHashrateUrl, restTemplate);
 
     String actual = bitcoinHashrateProxy.execute();
     System.out.println("Hashrate: " + actual);

@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/bitcoin")
-public class RestAPIController {
+@RequestMapping(path = "/profitability")
+public class MiningProfitabilityController {
 
   private final Function<BitcoinHashPriceDto, BitcoinDataApiDto>
       bitcoinHashPriceDtoBitcoinDataApiDtoMapper;
   private final GetCurrentHashPrice getCurrentHashPrice;
   private final GetCurrentMinerProfitability getCurrentMinerProfitability;
 
-  public RestAPIController(
+  public MiningProfitabilityController(
       Function<BitcoinHashPriceDto, BitcoinDataApiDto> bitcoinHashPriceDtoBitcoinDataApiDtoMapper,
       GetCurrentHashPrice getCurrentHashPrice,
       GetCurrentMinerProfitability getCurrentMinerProfitability) {

@@ -18,8 +18,8 @@ class BitcoinHashrateProxyImplTest {
     String expected = "response";
     Mockito.when(restTemplate.getForObject(blockchainDotInfoHashrateUrl, String.class))
         .thenReturn(expected);
-    BitcoinHashrateProxy bitcoinHashrateProxy = new BitcoinHashrateProxyImpl(
-        blockchainDotInfoHashrateUrl, restTemplate);
+    BitcoinHashrateProxy bitcoinHashrateProxy =
+        new BitcoinHashrateProxyImpl(blockchainDotInfoHashrateUrl, restTemplate);
     String actual = bitcoinHashrateProxy.execute();
     Assertions.assertEquals(expected, actual);
   }
@@ -29,8 +29,8 @@ class BitcoinHashrateProxyImplTest {
     RestTemplate restTemplate = Mockito.mock(RestTemplate.class);
     Mockito.when(restTemplate.getForObject(blockchainDotInfoHashrateUrl, String.class))
         .thenThrow(new RestClientException("EXCEPTION"));
-    BitcoinHashrateProxy bitcoinHashrateProxy = new BitcoinHashrateProxyImpl(
-        blockchainDotInfoHashrateUrl, restTemplate);
+    BitcoinHashrateProxy bitcoinHashrateProxy =
+        new BitcoinHashrateProxyImpl(blockchainDotInfoHashrateUrl, restTemplate);
     Assertions.assertThrows(
         UnableToRetrieveBitcoinHashrateException.class, bitcoinHashrateProxy::execute);
   }
