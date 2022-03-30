@@ -43,11 +43,11 @@ public class BitcoinHashPriceDtoMinerDataInputDtoMinerProfitabilityResponseMappe
     double profitSats =
         dollarsToSats(profitDollars, Double.parseDouble(bitcoinHashPriceDto.getPrice()));
 
-    minerProfitabilityResponse.setRevenueDollars(String.valueOf(revenueDollars * days));
-    minerProfitabilityResponse.setElectricCost(String.valueOf(costDollars * days));
-    minerProfitabilityResponse.setProfitDollars(String.valueOf(profitDollars * days));
-    minerProfitabilityResponse.setRevenueSats(String.valueOf(revenueSats * days));
-    minerProfitabilityResponse.setProfitSats(String.valueOf(profitSats * days));
+    minerProfitabilityResponse.setRevenueDollars(multiplyByDaysAndFormat(revenueDollars, days));
+    minerProfitabilityResponse.setElectricCost(multiplyByDaysAndFormat(costDollars, days));
+    minerProfitabilityResponse.setProfitDollars(multiplyByDaysAndFormat(profitDollars, days));
+    minerProfitabilityResponse.setRevenueSats(multiplyByDaysAndFormat(revenueSats, days));
+    minerProfitabilityResponse.setProfitSats(multiplyByDaysAndFormat(profitSats, days));
     return minerProfitabilityResponse;
   }
 
@@ -71,5 +71,11 @@ public class BitcoinHashPriceDtoMinerDataInputDtoMinerProfitabilityResponseMappe
     return BigDecimal.valueOf((dollarAmount / bitcoinPrice) * 100000000)
         .setScale(4, RoundingMode.HALF_UP)
         .doubleValue();
+  }
+
+  private String multiplyByDaysAndFormat(double dailyUnit, double numberOfDays) {
+    return BigDecimal.valueOf((dailyUnit * numberOfDays))
+        .setScale(3, RoundingMode.HALF_UP)
+        .toString();
   }
 }
