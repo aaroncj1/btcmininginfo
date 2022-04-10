@@ -1,5 +1,5 @@
 # btcmininginfo
-SpringBoot API that calculates and returns current Bitcoin Mining Information
+SpringBoot API that gives up-to-date information on the current Bitcoin Mining Economics
 
 ## Endpoints
 ### HTTP GET Method /profitability
