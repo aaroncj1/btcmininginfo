@@ -43,10 +43,15 @@ Sample Response Body:
 ```
 
 ## Code Style Guide 
-I am using google style guide for this project. You can import the style schema from their repo here: https://github.com/google/styleguide
+This codebase is using google style guide. You can download the style xml here: https://github.com/google/styleguide
 
 ## Testing
 
 This api was built using Test Driven Development and has 100% unit test coverage.
 
 In addition, there are 2 integration tests to test that each of the external REST calls are successful.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
