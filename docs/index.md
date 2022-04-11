@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 ## Endpoints
 ### HTTP GET Method /profitability
 This endpoint will return bitcoin mining profitability details per terahash unit. Response include current bitcoin price, current Hashrate, hashprice per Terahash in Dollars and in Satoshis
@@ -45,10 +44,21 @@ Sample Response Body:
 ```
 
 ## Code Style Guide 
-I am using google style guide for this project. You can import the style schema from their repo here: https://github.com/google/styleguide
+I am using google style guide for this project. You can download the style xml file from here: https://github.com/google/styleguide
 
 ## Testing
 
 This api was built using Test Driven Development and has 100% unit test coverage.
 
 In addition, there are 2 integration tests to test that each of the external REST calls are successful.
+
+## Future Features
+
+### SlushPool API
+
+Adding support for the Slushpool pool and miner stats is a feature to be added
+
+### Average Block Reward 
+
+Calculate the average block reward, currently it is set as a constant value. 
+

@@ -1,5 +1,5 @@
 title: Bitcoin Mining Info API
-description: SpringBoot REST API that calculates and returns current Bitcoin Mining Information
+description: SpringBoot REST API that give up-to-date information on the current Bitcoin Mining Economics
 show_downloads: false
 google_analytics: false
 theme: jekyll-theme-cayman
