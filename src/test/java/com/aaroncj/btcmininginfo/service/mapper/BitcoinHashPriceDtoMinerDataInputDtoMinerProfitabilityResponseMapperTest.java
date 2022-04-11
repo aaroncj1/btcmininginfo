@@ -25,7 +25,7 @@ class BitcoinHashPriceDtoMinerDataInputDtoMinerProfitabilityResponseMapperTest {
 
   @BeforeEach
   public void setUp() {
-    expected = new MinerProfitabilityResponse("4468.0851", "2.1", "2.592", "-1046.8085", "-0.492");
+    expected = new MinerProfitabilityResponse("4468.085", "2.100", "2.592", "-1046.809", "-0.492");
 
     Mockito.when(minerDataInputDto.getTerahash()).thenReturn("10.5");
     Mockito.when(minerDataInputDto.getPricePerKWH()).thenReturn(".12");
