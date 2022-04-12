@@ -1,6 +1,9 @@
 # btcmininginfo
 SpringBoot API that gives up-to-date information on the current Bitcoin Mining Economics
 
+## Try it out
+http://aaroncj.xyz/api/mining/profitability
+
 ## Endpoints
 ### HTTP GET Method /profitability
 This endpoint will return bitcoin mining profitability details per terahash unit. Response include current bitcoin price, current Hashrate, hashprice per Terahash in Dollars and in Satoshis
