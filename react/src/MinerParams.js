@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import MinerData from "./MinerData";
+import { server } from "./config.js"
 
-const MinerParams = () => {
+const MinerParams = (props) => {
     const [electricalRate, setElectricalRate] = useState("0.1");
     const [terahash, setTerahash] = useState("13.5");
     const [totalWattage, setTotalWattage] = useState("1300");
     const [days, setDays] = useState("30");
-    const [ {revenueSats, revenueDollars, electricCost, profitSats, profitDollars}, setMiningResults] = useState("");
 
   useEffect(() => {
     requestMiningResults();
@@ -14,7 +13,7 @@ const MinerParams = () => {
 
   async function requestMiningResults() {
     const res = await fetch(
-        `http://localhost:8081/profitability`, {
+        `http://${server}:8081/profitability`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
@@ -23,11 +22,11 @@ const MinerParams = () => {
             body: JSON.stringify({"pricePerKWH": electricalRate, terahash, totalWattage, days})
           });
     const json = await res.json();
-    setMiningResults(json);
+    props.childToParent(json);
   }
 
   return (
-    <div className="formbox">
+    <div>
       <form className="MinerData"
       onSubmit={(e) => {
           e.preventDefault();
@@ -117,9 +116,6 @@ const MinerParams = () => {
         <br/>
 
       </form>
-      <div className="MinerData">
-      <MinerData revenueDollars={revenueDollars} revenueSats={revenueSats} electricCost={electricCost} profitDollars={profitDollars} profitSats={profitSats} />
-      </div>
     </div>
   );
 };

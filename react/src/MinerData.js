@@ -1,7 +1,4 @@
-//import { useEffect, useState } from "react";
-
 export default function MinerData (props) {
-    //const [{hashrate, hashPriceDollars, hashPriceSats, bitcoinPrice}, setProfitData] = useState("");
 
     return (
         <div className="MinerData">
@@ -9,19 +6,19 @@ export default function MinerData (props) {
                 Mining Profitability Results
             </h2>
             <p>
-                Revenue in Dollars = {props.revenueDollars}
+                Revenue in Dollars = {props.data.revenueDollars}
             </p>
             <p>
-                Revenue in Sats = {props.revenueSats}
+                Revenue in Sats = {props.data.revenueSats}
             </p>
             <p>
-                Electrical Cost = {props.electricCost}
+                Electrical Cost = {props.data.electricCost}
             </p>
             <p>
-                Profit in dollars = {props.profitDollars}
+                Profit in dollars = {props.data.profitDollars}
             </p>
             <p>
-                Profit in sats = {props.profitSats}
+                Profit in sats = {props.data.profitSats}
             </p>
 
         </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { server } from "./config.js"
 
 export default function EconomicsData () {
     const [{hashrate, hashPriceDollars, hashPriceSats, bitcoinPrice}, setProfitData] = useState("");
@@ -9,7 +10,7 @@ export default function EconomicsData () {
     
     async function requestProfitData() {
         const res = await fetch(
-          `http://localhost:8081/profitability`
+          `http://${server}:8081/profitability`
         );
         const json = await res.json();
         setProfitData(json);
