@@ -2,7 +2,9 @@
 SpringBoot API that gives up-to-date information on the current Bitcoin Mining Economics
 
 ## Try it out
-http://aaroncj.xyz/api/mining/profitability
+http://www.btcmininginfo.com
+
+![img.png](img.png)
 
 ## Endpoints
 ### HTTP GET Method /profitability
