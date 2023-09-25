@@ -1,3 +1,3 @@
-const server = 'ADD_SERVER_DETAILS';
+const server = 'https://btcmininginfo.com';
 
 export { server };

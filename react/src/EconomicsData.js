@@ -10,7 +10,7 @@ export default function EconomicsData () {
     
     async function requestProfitData() {
         const res = await fetch(
-          `http://${server}:8081/profitability`
+          `${server}/profitability`
         );
         const json = await res.json();
         setProfitData(json);

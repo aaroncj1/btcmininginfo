@@ -13,7 +13,7 @@ const MinerParams = (props) => {
 
   async function requestMiningResults() {
     const res = await fetch(
-        `http://${server}:8081/profitability`, {
+        `${server}/profitability`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
